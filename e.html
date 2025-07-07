@@ -3,7 +3,40 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="e.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Etch-a-Sketch</title>
   </head>
-  <body></body>
+  <body>
+    <div class="main">
+      <div class="cybertext">CYBER SKETCH</div>
+      <div class="container">
+        <div id="flex1">
+          <div id="ball"></div>
+          <div id="default"></div>
+          <div id="random"></div>
+          <div id="black"></div>
+          <div></div>
+          <input
+            type="range"
+            id="range"
+            min="16 * 16"
+            max="64*64"
+            value="16 * 16"
+          />
+        </div>
+        <div id="flex2">
+          <!-- maybe here dr id  ta3 flex2 -->
+          <div id="tableblack"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="e.js"></script>
+  </body>
 </html>
