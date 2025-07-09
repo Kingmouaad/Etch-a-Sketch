@@ -23,14 +23,66 @@ function add() {
         "style",
         `flex:1;border:1px solid white;width:${x}%;height:100%;`
       );
+      div.classList.toggle("ye");
       divmain.appendChild(div);
     }
+    reset.addEventListener("click", () => {
+      for (let i = 0; i < range.value; i++) {
+        tableblack.removeChild(divmain);
+      }
+    });
   }
 }
-range.addEventListener("mouseup", add);
+
 function remove() {
-  for (let i = 0; i < 64 * 64; i++) {
-    tableblack.removeChild(div);
+  while (tableblack.firstChild) {
+    tableblack.removeChild(tableblack.firstChild);
   }
 }
-reset.addEventListener("click", remove);
+range.addEventListener("mousedown", remove);
+range.addEventListener("mouseup", add);
+
+default1.addEventListener("click", () => {
+  const alldivs = tableblack.querySelectorAll("div.ye");
+  alldivs.forEach((div) => {
+    div.addEventListener("mouseover", function () {
+      div.style.backgroundColor = "red";
+      ball.style.backgroundColor = "red";
+    });
+  });
+});
+eraser.addEventListener("click", () => {
+  const alldivs = tableblack.querySelectorAll("div.ye");
+  alldivs.forEach((div) => {
+    div.addEventListener("mouseover", function () {
+      div.style.backgroundColor = "black";
+      ball.style.backgroundColor = "black";
+    });
+  });
+});
+random.addEventListener("click", () => {
+  const alldivs = tableblack.querySelectorAll("div.ye");
+  alldivs.forEach((div) => {
+    div.addEventListener("mouseover", function () {
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      div.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      ball.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    });
+  });
+});
+black.addEventListener("click", () => {
+  const alldivs = tableblack.querySelectorAll("div.ye");
+  alldivs.forEach((div) => {
+    let r = 0.1;
+    div.addEventListener("mouseover", function () {
+      r += 0.1;
+
+      div.style.backgroundColor = `rgba(0, 0, 0,${r})`;
+      ball.style.backgroundColor = `rgba(0, 0, 0,${r})`;
+    });
+  });
+});
+
+range.dispatchEvent(add());
